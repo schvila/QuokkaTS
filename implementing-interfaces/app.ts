@@ -12,7 +12,7 @@ class Person implements Greetable {
     this.name = n;
   }
 
-  greet = (phrase: string) =>{
+  greet = (phrase: string) : void =>{
     console.log(phrase + ' ' + this.name);
   }
 }
