@@ -21,30 +21,31 @@ class SwimmingMonster extends Monster {
   }
 }
 const bear = new Monster('bear');
-bear.attack() //?
-bear.walk() //?
+// bear.attack() 
+// bear.walk()
 
 const orel = new FlyingMonster('orel');
-orel.attack() //?
-orel.walk() //?
-orel.fly(); //?
+// orel.attack();
+// orel.walk();
+// orel.fly();
 
 // composition
 function swimmer({name}){
   return {
-    swim:() => {console.log(`${name} swam.`);}
+    swim:() => console.log(`${name} swam.`)
   }
 }
 function swimmingMonsterCreator(val){
   const monster = {name: val}
   return {
     ...monster,
-    ...swimmer(monster)
+    ...swimmer(monster),
+    ...attackerAndWalker(monster)
   }
 }
 function flyer({name}){
   return {
-    fly:() => {console.log(`${name} flew.`);}
+    fly:() => console.log(`${name} flew.`)
   }
 }
 function attackerAndWalker({name}){
@@ -68,10 +69,10 @@ function swimmingFlyingMonsterCreator(val){
 const shark = swimmer({name: 'shark'});
 shark.swim(); 
 
-const obj  = swimmingMonsterCreator('tuna');
-obj.swim(); 
+const tuna  = swimmingMonsterCreator('tuna');
+tuna.swim(); 
 
-const sfm = swimmingFlyingMonsterCreator('monstrum');
-sfm.fly();
-sfm.attack();
-sfm.walk();
+const monster = swimmingFlyingMonsterCreator('monstrum');
+monster.fly();
+monster.attack();
+monster.walk();
